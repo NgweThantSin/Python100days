@@ -1,18 +1,19 @@
 from turtle import Turtle,Screen
-square_position = [0,-20,-40]
+square_position = [(0,0),(-20,0),(-40,0)]
 UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
 
-class Snake():
+class Snake(Turtle):
     def __init__(self):
+        super().__init__()
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
 
     def create_snake(self):
-        for position in range(0, 3):
+        for position in square_position:
             self.add_segment(position)
 
 
@@ -21,7 +22,7 @@ class Snake():
         # new_segment.shapesize(1)
         new_segment.color("white")
         new_segment.penup()
-        new_segment.goto(x=square_position[position], y=0)
+        new_segment.goto(position)
         self.segments.append(new_segment)
 
 
